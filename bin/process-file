@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+issue_template() {
+  local file="$1"
+
+  read -d "" -r template <<EOF
+  {
+    type: "issue",
+    check_name: .check,
+    description: .message,
+    categories: ["Clarity"],
+    location: {
+      path: "$file",
+      positions: {
+        begin: { offset: .start },
+        end: { offset: .end }
+      }
+    }
+  }
+EOF
+
+  echo "$template"
+}
+
+should_analyze() {
+  local file="$1"
+
+  if [[ "$file" == *.md ]] || [[ "$file" == *.markdown ]] || [[ "$file" == "*.rst" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+process_file() {
+  local file="$1"
+  local template
+
+  if should_analyze "$file"; then
+    template=$(issue_template "$file")
+    proselint --json "$file" | jq -c ".data | .errors[] | $template" | xargs -i printf "%s\0" {}
+  fi
+}
+
+process_file "$1"

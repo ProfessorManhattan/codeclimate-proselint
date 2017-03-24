@@ -1,0 +1,10 @@
+engines:
+  proselint:
+    enabled: true
+  shellcheck:
+    enabled: true
+ratings:
+  paths:
+    - "**/*.md"
+    - "bin/*"
+exclude_paths:

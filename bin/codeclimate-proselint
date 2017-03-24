@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+paths="$(jq -r ".include_paths[]" /config.json)"
+
+while read -r path; do
+  if [ -f "$path" ]; then
+    /usr/src/app/bin/process-file "$path"
+  else
+    find "$path" -type f -print0 | xargs -0 /usr/src/app/bin/process-file
+  fi
+done <<< "$paths"

@@ -1,0 +1,14 @@
+{
+  "name": "proselint",
+  "description": "A linter for prose.",
+  "maintainer": {
+    "name": "Devon Blandin",
+    "email": "dblandin@gmail.com"
+  },
+  "languages": [
+    "Markdown",
+    "reStructuredText"
+  ],
+  "version": "0.8.0",
+  "spec_version": "0.3.1"
+}

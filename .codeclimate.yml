@@ -1,6 +1,7 @@
 engines:
   proselint:
     enabled: true
+    channel: beta
   shellcheck:
     enabled: true
 ratings:

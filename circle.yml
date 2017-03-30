@@ -1,0 +1,19 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - make image
+
+test:
+  override:
+    - echo "skipped"
+
+deployment:
+  registry:
+    branch: master
+    commands:
+      - docker login --email $DOCKER_EMAIL --password $DOCKER_PASSWORD
+      - docker tag codeclimate/codeclimate-proselint dblandin/codeclimate-proselint:$CIRCLE_BUILD_NUM
+      - docker push dblandin/codeclimate-proselint:$CIRCLE_BUILD_NUM

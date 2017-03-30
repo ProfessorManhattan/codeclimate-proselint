@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+
+"""Generate Code Climate checks from check docstrings."""
+
+import ast
+import glob
+import json
+import frontmatter
+import os
+import site
+
+
+def is_check(path):
+    """Check whether a file contains a check."""
+    if not path[-3:] == ".py":
+      return False
+
+    if path[-11:] == "__init__.py":
+      return False
+
+    if "inprogress" in path:
+      return False
+
+    return True
+
+
+def readup(metadata, description):
+  return """
+  # %s
+
+  ## Source
+
+  %s
+  %s
+
+  ## Description
+
+  %s
+  """.strip() % (metadata["title"], metadata["source"], metadata["source_url"], description)
+
+
+def generate_check(path, docstring, metadata):
+  id = os.path.splitext(".".join(path.split("/")[-2:]))[0]
+  description = "\n".join(docstring.split("\n\n")[-1:])
+  content = readup(metadata, description)
+
+  check = {
+    "id": id,
+    "title": metadata["title"],
+    "content": content,
+    "category": "Clarity",
+    "tags": ["writing"]
+  }
+
+  return check
+
+
+def generate_checks():
+    checks = []
+    paths = glob.glob("%s/proselint/checks/**/*.py" % (site.getsitepackages()[0]))
+
+    for path in paths:
+      if is_check(path):
+        tree = ast.parse(open(path).read())
+        docstring = ast.get_docstring(tree)
+        metadata, content = frontmatter.parse(docstring)
+
+        if metadata.keys():
+          check = generate_check(path, docstring, metadata)
+          checks.append(check)
+
+    return checks
+
+checks = generate_checks()
+print json.dumps(checks)
+

@@ -9,6 +9,9 @@ issue_template() {
     check_name: .check,
     description: .message,
     categories: ["Clarity"],
+    content: {
+      body: ($checks[.check] | .content)
+    },
     location: {
       path: "$file",
       positions: {
@@ -38,7 +41,7 @@ process_file() {
 
   if should_analyze "$file"; then
     template=$(issue_template "$file")
-    proselint --json "$file" | jq -c ".data | .errors[] | $template" | xargs -i printf "%s\0" {}
+    proselint --json "$file" | jq -c ".data.errors[] | $template" | xargs -i print "%s\0" {}
   fi
 }
 

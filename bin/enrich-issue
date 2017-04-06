@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+enrich_issue() {
+  local issue="$1"
+  local check_name="$(echo "$issue" | jq -r ".check_name")"
+  echo $check_name
+  cat checks.json | jq --slurp-file checks checks.json -c -r -M '.[] | select(.id == $check) | .id'
+
+  if ! [ -z ${readup+x} ]; then
+    echo "$issue" | jq -c ".content.body = \"$readup\""
+  else
+    echo "$issue"
+  fi
+}
+
+issue="$1"
+enrich_issue "$issue" | xargs --null printf "%s\0"

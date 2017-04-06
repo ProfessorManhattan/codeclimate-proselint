@@ -56,7 +56,7 @@ def generate_check(path, docstring, metadata):
 
 
 def generate_checks():
-    checks = []
+    checks = {}
     paths = glob.glob("%s/proselint/checks/**/*.py" % (site.getsitepackages()[0]))
 
     for path in paths:
@@ -67,10 +67,9 @@ def generate_checks():
 
         if metadata.keys():
           check = generate_check(path, docstring, metadata)
-          checks.append(check)
+          checks[check["id"]] = check
 
     return checks
 
 checks = generate_checks()
 print json.dumps(checks)
-

@@ -1,0 +1,10 @@
+.git
+.gitignore
+Dockerfile
+.dockerignore
+.codeclimate.yml
+Makefile
+LICENSE
+slim.report.json
+contrainer-test-config.yaml
+paths.txt

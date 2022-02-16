@@ -1,0 +1,4 @@
+/usr/src/app/file.md
+/usr/src/app/tests/codeclimate-proselint
+/usr/src/app/tests/config.json
+/home/app/

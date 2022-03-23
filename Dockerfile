@@ -5,19 +5,23 @@ WORKDIR /work
 COPY local/engine.json engine.json
 COPY local/bin /usr/local/bin/
 
+SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 RUN apk add --no-cache \
-    bash \
-    jq \
-    python3 \
-    && apk --no-cache add --virtual build-deps \
-    py3-pip \
-    && pip3 install proselint python-frontmatter \
-    && generate-checks > /checks.json \
-    && VERSION=$(pip3 show proselint | grep Version | cut -d " " -f2) \
-    && cat ./engine.json | jq ".version = \"$version\"" > /engine.json \
-    && adduser --uid 9000 --gecos "" --disabled-password app \
-    && apk del build-deps \
-    && rm -rf /tmp/*
+  bash=~5 \
+  jq=~1 \
+  python3=~3 \
+  && apk --no-cache add --virtual build-deps \
+  py3-pip=~20 \
+  && pip3 install --no-cache-dir \
+  proselint==0.13.0 \
+  python-frontmatter==1.0.0 \
+  && ln -sf "$(which python3)" /usr/bin/python \
+  && generate-checks > /checks.json \
+  && VERSION=$(pip3 show proselint | grep Version | cut -d " " -f2) \
+  && cat ./engine.json | jq ".version = \"$VERSION\"" > /engine.json \
+  && adduser --uid 9000 --gecos "" --disabled-password app \
+  && apk del build-deps \
+  && rm -rf /tmp/*
 
 USER app
 
@@ -45,14 +49,19 @@ LABEL space.megabyte.type="codeclimate"
 
 FROM alpine:latest AS proselint
 
+# hadolint ignore=DL3002
 USER root
 
+WORKDIR /work
+
 RUN apk add --no-cache \
-    python3 \
-    && apk --no-cache add --virtual build-deps \
-    py3-pip \
-    && pip3 install proselint \
-    && apk del build-deps
+  python3=~3 \
+  && apk --no-cache add --virtual build-deps \
+  py3-pip=~20 \
+  && pip3 install --no-cache-dir \
+  proselint==0.13.0 \
+  && apk del build-deps \
+  && rm -rf /tmp/*
 
 ENTRYPOINT ["proselint"]
 CMD ["--version"]

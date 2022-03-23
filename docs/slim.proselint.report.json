@@ -1,0 +1,371 @@
+{
+  "version": "1.0",
+  "engine": "linux|Transformer|1.37.2|ca48b5b3f8da2a791591618103edeb539242d4ac|2021-11-08_04:29:53PM",
+  "containerized": false,
+  "host_distro": {
+    "name": "Fedora Linux",
+    "version": "35",
+    "display_name": "Fedora Linux 35 (Workstation Edition)"
+  },
+  "type": "build",
+  "state": "done",
+  "target_reference": "megabytelabs/proselint:latest",
+  "system": {
+    "type": "Linux",
+    "release": "5.15.11-200.fc35.x86_64",
+    "distro": {
+      "name": "Alpine Linux",
+      "version": "3.15.1",
+      "display_name": "Alpine Linux v3.15"
+    }
+  },
+  "source_image": {
+    "identity": {
+      "id": "sha256:1226e70d6c7c55fd190795d7dc995dc6a5ab51e1f0dcf68550ced41f1d2cf9cb",
+      "tags": ["latest"],
+      "names": ["megabytelabs/proselint:latest"]
+    },
+    "size": 56648176,
+    "size_human": "57 MB",
+    "create_time": "2022-03-23T08:24:05Z",
+    "docker_version": "20.10.12",
+    "architecture": "amd64",
+    "user": "root",
+    "os": "linux",
+    "labels": {
+      "maintainer": "Megabyte Labs <help@megabyte.space>",
+      "org.opencontainers.image.authors": "Brian Zalewski <brian@megabyte.space>",
+      "org.opencontainers.image.created": "2022-03-23T03:15:29-04:00",
+      "org.opencontainers.image.description": "A slim Proselint standalone linter / CodeClimate engine for GitLab CI",
+      "org.opencontainers.image.documentation": "https://github.com/megabyte-labs/codeclimate-proselint/blob/master/README.md",
+      "org.opencontainers.image.licenses": "MIT",
+      "org.opencontainers.image.revision": "2c5bbcdd7c577752dd53470a65be25546b94bb3a",
+      "org.opencontainers.image.source": "https://gitlab.com/megabyte-labs/docker/codeclimate/hadolint.git",
+      "org.opencontainers.image.url": "https://megabyte.space",
+      "org.opencontainers.image.vendor": "Megabyte Labs",
+      "org.opencontainers.image.version": "0.13.0",
+      "space.megabyte.type": "linter"
+    },
+    "env_vars": ["PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"],
+    "container_entry": {
+      "exe_path": ""
+    }
+  },
+  "minified_image_size": 13324892,
+  "minified_image_size_human": "13 MB",
+  "minified_image": "megabytelabs/proselint:slim",
+  "minified_image_has_data": true,
+  "minified_by": 4.251304701006207,
+  "artifact_location": "/tmp/docker-slim-state/.docker-slim-state/images/1226e70d6c7c55fd190795d7dc995dc6a5ab51e1f0dcf68550ced41f1d2cf9cb/artifacts",
+  "container_report_name": "creport.json",
+  "seccomp_profile_name": "megabytelabs-proselint-seccomp.json",
+  "apparmor_profile_name": "megabytelabs-proselint-apparmor-profile",
+  "image_stack": [
+    {
+      "is_top_image": false,
+      "id": "sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d",
+      "full_name": "alpine:latest",
+      "repo_name": "alpine",
+      "version_tag": "latest",
+      "raw_tags": ["alpine:latest"],
+      "create_time": "2022-03-17T04:01:59Z",
+      "new_size": 5570147,
+      "new_size_human": "5.6 MB",
+      "instructions": [
+        {
+          "type": "ADD",
+          "time": "2022-03-17T04:01:58Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 5570147,
+          "size_human": "5.6 MB",
+          "params": "file:cf4b631a115c2bbfbd81cad2d3041bceb64a8136aac92ba8a63b6c51d60af764 in /",
+          "command_snippet": "ADD file:cf4b631a115c2bbfbd81cad2d3041bceb64...",
+          "command_all": "ADD file:cf4b631a115c2bbfbd81cad2d3041bceb64a8136aac92ba8a63b6c51d60af764 /",
+          "target": "/",
+          "source_type": "file"
+        },
+        {
+          "type": "CMD",
+          "time": "2022-03-17T04:01:59Z",
+          "is_last_instruction": true,
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": true,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"/bin/sh\"]",
+          "command_snippet": "CMD [\"/bin/sh\"]",
+          "command_all": "CMD [\"/bin/sh\"]",
+          "raw_tags": ["alpine:latest"]
+        }
+      ]
+    },
+    {
+      "is_top_image": true,
+      "id": "sha256:1226e70d6c7c55fd190795d7dc995dc6a5ab51e1f0dcf68550ced41f1d2cf9cb",
+      "full_name": "megabytelabs/proselint:latest",
+      "repo_name": "megabytelabs/proselint",
+      "version_tag": "latest",
+      "raw_tags": ["megabytelabs/proselint:latest"],
+      "create_time": "2022-03-23T08:24:05Z",
+      "new_size": 51078029,
+      "new_size_human": "51 MB",
+      "base_image_id": "sha256:e9adb5357e84d853cc3eb08cd4d3f9bd6cebdb8a67f0415cc884be7b0202416d",
+      "instructions": [
+        {
+          "type": "USER",
+          "time": "2022-03-23T08:11:50Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:6b6b2c45644699eb08cfe2f7ea4c42e125d5656c12d38db1740a99b3ac6d657f",
+          "layer_index": 0,
+          "size": 0,
+          "params": "root",
+          "command_snippet": "USER root",
+          "command_all": "USER root"
+        },
+        {
+          "type": "WORKDIR",
+          "time": "2022-03-23T08:15:34Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:f24d972932e06e3940a4cd946b96df06fc4fa610ddae86aff536ce24f89784d1",
+          "layer_index": 0,
+          "size": 0,
+          "params": "/work",
+          "command_snippet": "WORKDIR /work",
+          "command_all": "WORKDIR /work",
+          "system_commands": ["mkdir -p /work"]
+        },
+        {
+          "type": "RUN",
+          "time": "2022-03-23T08:23:32Z",
+          "is_nop": false,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:d57aa93079e8c565da3ad23dc07c0611dc7c1e92b93ba6989d0cf33a2db2b193",
+          "layer_index": 0,
+          "size": 51078029,
+          "size_human": "51 MB",
+          "command_snippet": "RUN apk add --no-cache   python3 && \\\n\tapk -...",
+          "command_all": "RUN apk add --no-cache   python3 && \\\n\tapk --no-cache add --virtual build-deps   py3-pip && \\\n\tpip3 install proselint && \\\n\tapk del build-deps && \\\n\trm -rf /tmp/*",
+          "system_commands": [
+            "apk add --no-cache   python3",
+            "apk --no-cache add --virtual build-deps   py3-pip",
+            "pip3 install proselint",
+            "apk del build-deps",
+            "rm -rf /tmp/*"
+          ]
+        },
+        {
+          "type": "ENTRYPOINT",
+          "time": "2022-03-23T08:23:32Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:b0a4775383f1d042a061f463d7f0e24fc524cc8245bb2461021ae4e1a5a6c854",
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"proselint\"]",
+          "command_snippet": "ENTRYPOINT [\"proselint\"]",
+          "command_all": "ENTRYPOINT [\"proselint\"]"
+        },
+        {
+          "type": "CMD",
+          "time": "2022-03-23T08:23:33Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:81b3fe8d2d636fcadb9ff81d965e07f5ce9e6d35cc1ce3a3cd6f32a8fbb19217",
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"--version\"]",
+          "command_snippet": "CMD [\"--version\"]",
+          "command_all": "CMD [\"--version\"]"
+        },
+        {
+          "type": "ARG",
+          "time": "2022-03-23T08:23:34Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:e1896edda4b916cfbab0807118dcc4cfc415fa2bc2c2ca7d76d205ea9b41362d",
+          "layer_index": 0,
+          "size": 0,
+          "params": "BUILD_DATE",
+          "command_snippet": "ARG BUILD_DATE",
+          "command_all": "ARG BUILD_DATE"
+        },
+        {
+          "type": "ARG",
+          "time": "2022-03-23T08:23:35Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:0b349462ec7aeda5e6c2a3c4d681b87d3dab324efc1705239dfd310c0c0977ae",
+          "layer_index": 0,
+          "size": 0,
+          "params": "REVISION",
+          "command_snippet": "ARG REVISION",
+          "command_all": "ARG REVISION"
+        },
+        {
+          "type": "ARG",
+          "time": "2022-03-23T08:23:36Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:ac7fa5aa39a55318530660ce93eb35f55552ff0567b90df8bb93af926b92604c",
+          "layer_index": 0,
+          "size": 0,
+          "params": "VERSION",
+          "command_snippet": "ARG VERSION",
+          "command_all": "ARG VERSION"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:37Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:bc862a3fc4752445ccbc8f6af09c8364ecf6583bf7eca8ca1d103ffcc92fd5d9",
+          "layer_index": 0,
+          "size": 0,
+          "params": "maintainer=Megabyte Labs <help@megabyte.space>",
+          "command_snippet": "LABEL maintainer=Megabyte Labs <help@megabyt...",
+          "command_all": "LABEL maintainer=Megabyte Labs <help@megabyte.space>"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:38Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:82067d38251c60330ed1082e0d570cdc71d2e91093775351c6f434a06f2e0998",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.authors=Brian Zalewski <brian@megabyte.space>",
+          "command_snippet": "LABEL org.opencontainers.image.authors=Brian...",
+          "command_all": "LABEL org.opencontainers.image.authors=Brian Zalewski <brian@megabyte.space>"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:55Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:c79b43447e7e799dba82ef3098f2c16778cae8175129a765a61421d79aad9693",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.created=2022-03-23T03:15:29-04:00",
+          "command_snippet": "LABEL org.opencontainers.image.created=2022-...",
+          "command_all": "LABEL org.opencontainers.image.created=2022-03-23T03:15:29-04:00"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:56Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:51e5cf84c41f2508d83233bbab6bf39dd552c01c75f881c9f178db936ff43774",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.description=A slim Proselint standalone linter / CodeClimate engine for GitLab CI",
+          "command_snippet": "LABEL org.opencontainers.image.description=A...",
+          "command_all": "LABEL org.opencontainers.image.description=A slim Proselint standalone linter / CodeClimate engine for GitLab CI"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:57Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:55b53bfbd1f14c9de6fd64ef919fac2d238958b9f507437fcd5ba6622c2e3276",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.documentation=https://github.com/megabyte-labs/codeclimate-proselint/blob/master/README.md",
+          "command_snippet": "LABEL org.opencontainers.image.documentation...",
+          "command_all": "LABEL org.opencontainers.image.documentation=https://github.com/megabyte-labs/codeclimate-proselint/blob/master/README.md"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:58Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:af3a155800960a7d8c09118f8eb9c46bf0f9e951fd9b45c7f851d02c3cbb1e2c",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.licenses=MIT",
+          "command_snippet": "LABEL org.opencontainers.image.licenses=MIT",
+          "command_all": "LABEL org.opencontainers.image.licenses=MIT"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:23:59Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:36b5a52c8ca24aa0dd2514015b3449b9f7b94a870dac730cc633f4a4d4036d63",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.revision=2c5bbcdd7c577752dd53470a65be25546b94bb3a",
+          "command_snippet": "LABEL org.opencontainers.image.revision=2c5b...",
+          "command_all": "LABEL org.opencontainers.image.revision=2c5bbcdd7c577752dd53470a65be25546b94bb3a"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:24:00Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:effcfbae53f7d951e6955b614a50388e9ccdc56b8857cf86ccc6de5a749761f4",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.source=https://gitlab.com/megabyte-labs/docker/codeclimate/hadolint.git",
+          "command_snippet": "LABEL org.opencontainers.image.source=https:...",
+          "command_all": "LABEL org.opencontainers.image.source=https://gitlab.com/megabyte-labs/docker/codeclimate/hadolint.git"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:24:01Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:8acb76f4eb8f598024f7d7ed47ddb28ce0b75fdd2631eb41a22d82b5f108b591",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.url=https://megabyte.space",
+          "command_snippet": "LABEL org.opencontainers.image.url=https://m...",
+          "command_all": "LABEL org.opencontainers.image.url=https://megabyte.space"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:24:02Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:c683f235f40517981f6d716edb4ddf5bbb4c094e528bdf9776d8d6f16a0869ce",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.vendor=Megabyte Labs",
+          "command_snippet": "LABEL org.opencontainers.image.vendor=Megaby...",
+          "command_all": "LABEL org.opencontainers.image.vendor=Megabyte Labs"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:24:04Z",
+          "is_nop": true,
+          "local_image_exists": true,
+          "intermediate_image_id": "sha256:e8cd895ca232e1d79064d9ffcf944bd4d97c8d78de02d5abc70c92358ed2aad3",
+          "layer_index": 0,
+          "size": 0,
+          "params": "org.opencontainers.image.version=0.13.0",
+          "command_snippet": "LABEL org.opencontainers.image.version=0.13....",
+          "command_all": "LABEL org.opencontainers.image.version=0.13.0"
+        },
+        {
+          "type": "LABEL",
+          "time": "2022-03-23T08:24:05Z",
+          "is_last_instruction": true,
+          "is_nop": true,
+          "local_image_exists": true,
+          "layer_index": 0,
+          "size": 0,
+          "params": "space.megabyte.type=linter",
+          "command_snippet": "LABEL space.megabyte.type=linter",
+          "command_all": "LABEL space.megabyte.type=linter",
+          "raw_tags": ["megabytelabs/proselint:latest"]
+        }
+      ]
+    }
+  ]
+}

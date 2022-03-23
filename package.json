@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@megabytelabs/codeclimate-proselint",
-  "version": "2.9.2",
+  "version": "0.13.0",
   "description": "A slim Proselint standalone linter / CodeClimate engine for GitLab CI",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
@@ -85,7 +85,7 @@
     "dockerBaseTag": "proselint",
     "dockerSlimCommand": {
       "codeclimate": "--http-probe=false --exec 'echo '{}' > /config.json && jq --version && bash --version && proselint --version && codeclimate-proselint' --mount \"$PWD/test/output-sample:/work\" --workdir '/work' --preserve-path-file 'local/paths.txt'",
-      "proselint": "--http-probe=false --exec 'proselint .' --mount \"$PWD/test/output-sample:/work\" --workdir '/work'"
+      "proselint": "--http-probe=false --exec 'proselint . || true' --mount \"$PWD/test/output-sample:/work\" --workdir '/work'"
     },
     "group": "docker",
     "name": "Proselint",
@@ -97,7 +97,18 @@
     "slug": "proselint",
     "subgroup": "codeclimate",
     "title": "Proselint CodeClimate Engine",
-    "versionCommand": "docker run -it megabytelabs/proselint:latest --version"
+    "versionCommand": "docker run -it megabytelabs/proselint:latest --version",
+    "github_id": "R_kgDOHDKQtA",
+    "gitlab_project_id": "32219840",
+    "gitlab_group_id": "14556970",
+    "dockerSlimSize": {
+      "codeclimate": "5.5M",
+      "proselint": "4.7M"
+    },
+    "dockerLatestSize": {
+      "codeclimate": "23M",
+      "proselint": "20M"
+    }
   },
   "changelog": {
     "displayTypes": [

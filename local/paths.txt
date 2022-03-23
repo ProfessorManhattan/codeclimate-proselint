@@ -1,0 +1,3 @@
+/usr/local/bin/codeclimate-proselint
+/usr/local/bin/generate-checks
+/usr/local/bin/process-file

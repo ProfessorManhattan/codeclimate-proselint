@@ -1,0 +1,18 @@
+---
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "Test --help command"
+    command: "proselint"
+    args: ["--help"]
+    expectedOutput: [".*Create the CLI for proselint, a linter for prose..*"]
+
+metadataTest:
+  labels:
+    - key: "maintainer"
+      value: "Megabyte Labs <help@megabyte.space>"
+    - key: "space.megabyte.type"
+      value: "linter"
+  entrypoint: ["proselint"]
+  workdir: "/work"
+  user: "root"

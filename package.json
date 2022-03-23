@@ -106,8 +106,8 @@
       "proselint": "4.7M"
     },
     "dockerLatestSize": {
-      "codeclimate": "23M",
-      "proselint": "20M"
+      "codeclimate": "22M",
+      "proselint": "19M"
     }
   },
   "changelog": {

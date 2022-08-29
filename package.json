@@ -34,7 +34,8 @@
     "start": "test -z $SKIP_NPM_START && bash start.sh || true",
     "test": "bash start.sh && task docker:test",
     "unpack": "bash start.sh && task npm:bundle:unpack",
-    "update": "bash start.sh && task update"
+    "update": "bash start.sh && task update",
+    "vscode": "bash start.sh && task vscode"
   },
   "config": {
     "commitizen": {
@@ -43,15 +44,21 @@
   },
   "typings": "dist/main.d.ts",
   "dependencies": {},
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": true
+    }
+  },
   "optionalDependencies": {},
   "devDependencies": {
+    "@commitlint/config-conventional": "latest",
     "eslint-config-strict-mode": "latest",
     "git-cz-emoji": "latest",
+    "handlebars-helpers": "latest",
+    "prettier": "^2.4.1",
     "prettier-config-sexy-mode": "latest",
     "semantic-release-config": "latest",
-    "typescript": "^4.5.5",
-    "@commitlint/config-conventional": "latest",
-    "handlebars-helpers": "latest"
+    "typescript": "^4.5.5"
   },
   "keywords": [
     "ci",
@@ -72,8 +79,11 @@
     "node": ">=14.18.0"
   },
   "publishConfig": {
+    "@gitlab:registry": "https://gitlab.com/api/v4/projects/32219840/packages/npm/",
     "@megabyte:registry": "https://gitlab.com/api/v4/projects//packages/npm/",
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "edge"
   },
   "blueprint": {
     "codeClimateLanguages": [
@@ -82,10 +92,21 @@
     ],
     "description": "A slim Proselint standalone linter / CodeClimate engine for GitLab CI",
     "dockerBaseTag": "proselint",
+    "dockerLatestSize": {
+      "codeclimate": "22M",
+      "proselint": "19M"
+    },
     "dockerSlimCommand": {
       "codeclimate": "--http-probe=false --exec 'echo '{}' > /config.json && jq --version && bash --version && proselint --version && codeclimate-proselint' --mount \"$PWD/test/output-sample:/work\" --workdir '/work' --preserve-path-file 'local/paths.txt'",
       "proselint": "--http-probe=false --exec 'proselint . || true' --mount \"$PWD/test/output-sample:/work\" --workdir '/work'"
     },
+    "dockerSlimSize": {
+      "codeclimate": "5.5M",
+      "proselint": "4.7M"
+    },
+    "github_id": "R_kgDOHDKQtA",
+    "gitlab_group_id": "14556970",
+    "gitlab_project_id": "32219840",
     "group": "docker",
     "name": "Proselint",
     "overview": "This project is the home of a **[Proselint](https://github.com/amperser/proselint)** [CodeClimate](https://codeclimate.com/) engine. It was built to integrate Proselint results into the GitLab merge request web UI. This project also builds a slim, standalone Proselint linter which can be used in conjunction with the CodeClimate engine or in places where CodeClimate engine results are not required.\n\nProselint is a great way of improving documentation. It is a linter that returns advice on how to improve writing in your markdown files.",
@@ -96,18 +117,7 @@
     "slug": "proselint",
     "subgroup": "codeclimate",
     "title": "Proselint CodeClimate Engine",
-    "versionCommand": "docker run -it megabytelabs/proselint:latest --version",
-    "github_id": "R_kgDOHDKQtA",
-    "gitlab_project_id": "32219840",
-    "gitlab_group_id": "14556970",
-    "dockerSlimSize": {
-      "codeclimate": "5.5M",
-      "proselint": "4.7M"
-    },
-    "dockerLatestSize": {
-      "codeclimate": "22M",
-      "proselint": "19M"
-    }
+    "versionCommand": "docker run -it megabytelabs/proselint:latest --version"
   },
   "changelog": {
     "displayTypes": [
@@ -120,7 +130,9 @@
     "showAuthor": true
   },
   "commitlint": {
-    "extends": [],
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "engine": "node >= 0.12.4",
@@ -208,6 +220,9 @@
       "task fix:prettier --",
       "task lint:vagrant"
     ],
+    "logo.(gif|jpg|jpeg|webp)": [
+      "task image:convert:logo --"
+    ],
     "logo.png": [
       "task image:resize -- 200 200",
       "task image:compress --"
@@ -245,7 +260,8 @@
     "peerDependencyRules": {
       "ignoreMissing": [
         "eslint",
-        "prettier"
+        "prettier",
+        "puppeteer"
       ]
     }
   },
@@ -258,12 +274,12 @@
       {
         "name": "beta",
         "prerelease": true
-      },
-      {
-        "name": "alpha",
-        "prerelease": true
       }
     ],
     "extends": "semantic-release-config"
+  },
+  "volta": {
+    "node": "18.4.0",
+    "yarn": "1.22.19"
   }
 }
